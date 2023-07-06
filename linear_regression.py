@@ -36,16 +36,15 @@ def estimate_price(mileage, mileages, prices, theta_0, theta_1):
     return denormalize_mileage
 
 
-def display_price(value):
-    print(f"The estimated price of the car is : {round(value)}$.")
-
-
 def main():
     mileages, prices = get_data_from_csv()
     theta_0, theta_1 = get_theta_from_csv()
     mileage = get_mileage()
     value = estimate_price(mileage, mileages, prices, theta_0, theta_1)
-    display_price(value)
+    if value < 0:
+        print(f"The mileage is too high, we can't sell it. ({round(value)}$)")
+    else:
+        print(f"The estimated price of the car is : {round(value)}$.")
 
 
 if __name__ == "__main__":

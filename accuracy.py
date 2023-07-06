@@ -13,7 +13,7 @@ def calculate_accuracy(mileages, prices, t0, t1):
         for i in range(length):
             total_sum += pow(prices[i] - mean, 2)
             est = estimate_price(mileages[i], mileages, prices, t0, t1)
-            est += pow(prices[i] - est, 2)
+            est_sum += pow(prices[i] - est, 2)
         try:
             coeff = 1 - (est_sum / total_sum)
         except ZeroDivisionError:
@@ -23,15 +23,11 @@ def calculate_accuracy(mileages, prices, t0, t1):
     return 0.0
 
 
-def display_accuracy(accuracy):
-    print(f"The accuracy is {accuracy:.2f} and {round(accuracy * 100)}%.")
-
-
 def main():
     mileages, prices = get_data_from_csv()
     theta_0, theta_1 = get_theta_from_csv()
     accuracy = calculate_accuracy(mileages, prices, theta_0, theta_1)
-    display_accuracy(accuracy)
+    print(f"The accuracy is {accuracy:.2f} and {round(accuracy * 100)}%.")
 
 
 if __name__ == "__main__":

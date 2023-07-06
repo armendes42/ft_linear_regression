@@ -10,7 +10,7 @@ def get_theta_from_csv():
         with open(r"theta.csv") as file:
             my_reader = csv.reader(file, delimiter=",")
             for index, row in enumerate(my_reader):
-                if index != 0:
+                if index != 0 and len(row) == 2:
                     theta_0 = float(row[0])
                     theta_1 = float(row[1])
     except IOError:
