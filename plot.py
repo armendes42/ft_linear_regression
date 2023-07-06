@@ -39,7 +39,7 @@ def main():
             else:
                 denormalize_mile = 0
             line_prices.append(denormalize_mile)
-        plt.plot(line_mileages, line_prices, color="red", label="Estimated Prices")
+        plt.plot(line_mileages, line_prices, color="red")
     plt.ylabel("Price")
     plt.xlabel("Mileage")
     plt.grid(True)
